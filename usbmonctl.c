@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define VERSION "1.1"
+#define VERSION "1.2"
 
 #define HID_USAGE_PAGE		0xffff0000
 
@@ -76,7 +76,7 @@ static struct name_table vesa_controls_generic[] = {
 };
 
 #define USB_VENDOR_SAMSUNG 0x0419
-/* Samsung-specific control names, found on SyncMaster 757DFX */
+/* Samsung-specific control names, found on SyncMaster 757DFX and 765MB */
 static struct name_table vesa_controls_samsung[] = {
 	{ .id = 0x1c, .name = "???", .hidden = true },
 	{ .id = 0x34, .name = "???", .hidden = true },
@@ -106,6 +106,16 @@ static struct name_table vesa_controls_samsung[] = {
 	{ .id = 0xb3, .name = "Highlight Zone ??? (read-only)" },
 	{ .id = 0xb4, .name = "Highlight Zone ??? (read-only)" },
 	{ .id = 0xb5, .name = "Highlight Zone ??? (read-only)" },
+	{ .id = 0xb6, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xb7, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xb8, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xb9, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xba, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xbb, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xbc, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xbd, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xbe, .name = "???", .hidden = true },	/* SyncMaster 765MB */
+	{ .id = 0xbf, .name = "???", .hidden = true },	/* SyncMaster 765MB */
 	{ .id = 0xd8, .name = "Horizontal Size (not in OSD)" },
 	{ .id = 0xdc, .name = "Highlight Zone/OSD Control (0=off, 2=on, 4=fullscreen/8=lock OSD, 16=unlock OSD)" },
 	{ .id = 0xee, .name = "Vertical Focus" },

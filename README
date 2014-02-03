@@ -25,4 +25,5 @@ Usage:
 
 Tested and working monitors:
 ----------------------------
-Samsung SyncMaster 757DFX (0x0419:0x8002)
+Samsung SyncMaster 757DFX	(0x0419:0x8002)
+Samsung SyncMaster 765MB	(0x0419:0x8002)

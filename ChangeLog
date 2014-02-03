@@ -1,4 +1,7 @@
 2010-07-30:
+	- version 1.2
+	- blacklist broken controls 0xb6-0xbf for Samsung SyncMaster 765MB
+2010-07-30:
 	- version 1.1
 	- add #include <linux/types.h> to fix compilation with older kernels
 2010-07-10:
