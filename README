@@ -1,0 +1,28 @@
+usbmonctl - USB HID Monitor Control Utility
+
+Useful when cloning machines including CMOS settings - to preserve service
+tags (which would be cloned too otherwise).
+
+Requirements:
+-------------
+Linux, GCC, Make
+
+Compilation:
+------------
+$ make
+
+Installation:
+-------------
+# make install
+
+This installs usbmonctl to /usr/bin and 95-usbmonctl-monitor.rules to
+/etc/udev/rules.d.
+The udev rule is needed to allow non-root users to control a monitor. It sets
+group "video" on all hiddev* devices that are USB HID monitors.
+
+Usage:
+------
+
+Tested and working monitors:
+----------------------------
+Samsung SyncMaster 757DFX (0x0419:0x8002)
