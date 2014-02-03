@@ -1,7 +1,6 @@
 usbmonctl - USB HID Monitor Control Utility
 
-Useful when cloning machines including CMOS settings - to preserve service
-tags (which would be cloned too otherwise).
+Controls higher-end monitors with USB port that comply with USB Monitor Control Class Specification.
 
 Requirements:
 -------------
@@ -27,3 +26,5 @@ Tested and working monitors:
 ----------------------------
 Samsung SyncMaster 757DFX	(0x0419:0x8002)
 Samsung SyncMaster 765MB	(0x0419:0x8002)
+Eizo FlexScan HD2441W		(0x056d:0x0002)
+Eizo FlexScan S1921		(0x056d:0x0002)
