@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define VERSION "1.2"
+#define VERSION "1.3"
 
 #define HID_USAGE_PAGE		0xffff0000
 
@@ -124,6 +124,33 @@ static struct name_table vesa_controls_samsung[] = {
 	{ .id = 0 }
 };
 
+#define USB_VENDOR_EIZO 0x056d
+/* EIZO-specific control names, found on Eizo FlexScan HD2441W and S1921 */
+static struct name_table vesa_controls_eizo[] = {
+	{ .id = 0x01, .name = "Color Temperature" },	/* FlexScan S1921 */
+	{ .id = 0x05, .name = "Mode (0=text, 3=custom, 4=sRGB)" },	/* FlexScan S1921 */
+	{ .id = 0x20, .name = "Contrast" },
+	{ .id = 0x21, .name = "Brightness" },
+	{ .id = 0x22, .name = "Red Gain" },
+	{ .id = 0x23, .name = "Green Gain" },
+	{ .id = 0x24, .name = "Blue Gain" },
+	{ .id = 0x25, .name = "Red Black" },
+	{ .id = 0x26, .name = "Green Black" },
+	{ .id = 0x27, .name = "Blue Black" },
+	{ .id = 0x3a, .name = "Brightness" },	/* FlexScan S1921 */
+	{ .id = 0x3b, .name = "Red Gain" },	/* FlexScan S1921 */
+	{ .id = 0x3c, .name = "Green Gain" },	/* FlexScan S1921 */
+	{ .id = 0x3d, .name = "Blue Gain" },	/* FlexScan S1921 */
+	{ .id = 0xc3, .name = "Mode" },
+	{ .id = 0xc7, .name = "OutlineEnhancer" },
+	{ .id = 0xd4, .name = "Gamma" },
+	{ .id = 0xd6, .name = "Color Temperature" },
+	{ .id = 0xd7, .name = "Saturation" },
+	{ .id = 0xd8, .name = "Hue" },
+	{ .id = 0xfd, .name = "ContrastEnhancer" },
+	{ .id = 0 }
+};
+
 static char *hiddev_paths[] = { "/dev/", "/dev/usb/", NULL };
 
 bool check = false;
@@ -149,6 +176,9 @@ char *control_name(int id) {
 	case USB_VENDOR_SAMSUNG:
 		retval = get_name_from_table(id, vesa_controls_samsung);
 		break;
+	case USB_VENDOR_EIZO:
+		retval = get_name_from_table(id, vesa_controls_eizo);
+		break;
 	}
 	if (!retval)
 		retval = get_name_from_table(id, vesa_controls_generic);
@@ -163,6 +193,9 @@ bool control_hidden(int id) {
 	switch (monitor_vendor) {
 	case USB_VENDOR_SAMSUNG:
 		table = vesa_controls_samsung;
+		break;
+	case USB_VENDOR_EIZO:
+		table = vesa_controls_eizo;
 		break;
 	}
 	if (!table)
@@ -397,7 +430,7 @@ void help(char *progname) {
 
 void version() {
 	printf("usbmonctl v%s - USB HID Monitor Control Utility\n", VERSION);
-	printf("Copyright (c) 2010 Ondrej Zary - http://www.rainbow-software.org\n");
+	printf("Copyright (c) 2012 Ondrej Zary - http://www.rainbow-software.org\n");
 	printf("License: GLPv2\n");
 }
 
