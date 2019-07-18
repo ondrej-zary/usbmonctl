@@ -22,6 +22,7 @@ group "video" on all hiddev* devices that are USB HID monitors.
 
 Usage:
 ------
+```
 Usage: usbmonctl [OPTION] [DEVICE]
 USB HID Monitor Control Utility
 
@@ -46,7 +47,7 @@ Examples:
   usbmonctl -s O,0x01,0,0=1             degauss
   usbmonctl -g F,16             get current brightness value
   usbmonctl -s F,0x12=10        set contrast to 10
-
+```
 Tested and working monitors:
 ----------------------------
 
