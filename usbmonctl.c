@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#define VERSION "1.3"
+#define VERSION "1.4"
 
 #define HID_USAGE_PAGE		0xffff0000
 
@@ -151,6 +151,19 @@ static struct name_table vesa_controls_eizo[] = {
 	{ .id = 0 }
 };
 
+#define USB_VENDOR_APPLE 0x05ac
+/* Apple-specific control names, found on Cinema Displays */
+static struct name_table vesa_controls_apple[] = {
+	{ .id = 0xd6, .name = "Power State (read-only, 1 = on, 2 = sleep, 4 = off)" },
+	{ .id = 0xe1, .name = "Buttons Control (enable 0xe7 and 0xe8)" },
+	{ .id = 0xe3, .name = "???", .hidden = true },
+	{ .id = 0xe4, .name = "???", .hidden = true },
+	{ .id = 0xe6, .name = "???", .hidden = true },
+	{ .id = 0xe7, .name = "Buttons Mask (bit 0 = power, bit 2 = brightness)" },
+	{ .id = 0xe8, .name = "Power Button as Sleep" },
+	{ .id = 0 }
+};
+
 static char *hiddev_paths[] = { "/dev/", "/dev/usb/", NULL };
 
 bool check = false;
@@ -179,6 +192,9 @@ char *control_name(int id) {
 	case USB_VENDOR_EIZO:
 		retval = get_name_from_table(id, vesa_controls_eizo);
 		break;
+	case USB_VENDOR_APPLE:
+		retval = get_name_from_table(id, vesa_controls_apple);
+		break;
 	}
 	if (!retval)
 		retval = get_name_from_table(id, vesa_controls_generic);
@@ -196,6 +212,9 @@ bool control_hidden(int id) {
 		break;
 	case USB_VENDOR_EIZO:
 		table = vesa_controls_eizo;
+		break;
+	case USB_VENDOR_APPLE:
+		table = vesa_controls_apple;
 		break;
 	}
 	if (!table)
@@ -430,7 +449,7 @@ void help(char *progname) {
 
 void version() {
 	printf("usbmonctl v%s - USB HID Monitor Control Utility\n", VERSION);
-	printf("Copyright (c) 2012 Ondrej Zary - http://www.rainbow-software.org\n");
+	printf("Copyright (c) 2025 Ondrej Zary - http://www.rainbow-software.org\n");
 	printf("License: GLPv2\n");
 }
 

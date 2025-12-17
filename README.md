@@ -58,3 +58,4 @@ Samsung SyncMaster 765MB                                                    | 0x
 Eizo FlexScan HD2441W                                                       | 0x056d:0x0002
 Eizo FlexScan S1921                                                         | 0x056d:0x0002
 Apple Cinema HD Display M8536 (with Apple DVI to ADC adapter A1006 EMC1918) | 0x05ac:0x9218
+Apple Cinema HD Display 23" (A1082)                                         | 0x05ac:0x921c
