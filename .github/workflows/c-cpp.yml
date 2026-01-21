@@ -1,0 +1,23 @@
+name: C/C++ CI
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: pguyot/arm-runner-action@HEAD
+      with:
+        base_image: raspios_lite:2023-05-03
+        commands: |
+          make
+        copy_artifact_path: usbmonctl
+    - name: Upload binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: usbmonctl
+        path: usbmonctl
+        retention-days: 1
