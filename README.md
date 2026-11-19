@@ -44,9 +44,10 @@ Available OPTIONs:
 Numbers can be specified in decimal or hexadecimal (prefixed by '0x').
 
 Examples:
-  usbmonctl -s O,0x01,0,0=1             degauss
+  usbmonctl -s O,0x01,0,0=1     degauss
   usbmonctl -g F,16             get current brightness value
   usbmonctl -s F,0x12=10        set contrast to 10
+  usbmonctl -s F,0xb0=1         store settings (Apple Studio)
 ```
 Tested and working monitors:
 ----------------------------

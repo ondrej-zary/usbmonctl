@@ -445,6 +445,7 @@ void help(char *progname) {
 	printf("  usbmonctl -s O,0x01,0,0=1\t\tdegauss\n");
 	printf("  usbmonctl -g F,16\t\tget current brightness value\n");
 	printf("  usbmonctl -s F,0x12=10\tset contrast to 10\n");
+	printf("  usbmonctl -s F,0xb0=1\t\tstore settings (Apple Studio)\n");
 }
 
 void version() {
